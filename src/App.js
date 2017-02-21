@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-import { RecipeList } from "./Components/RecipeList.js";
+import { RecipeListContainer } from "./containers/RecipeListContainer.js";
 
-export const App = ({recipes}) => (
+export const App = () => (
   <div>
-    <RecipeList recipes={recipes} />
+    {/*<AddRecipe />*/}
+    <RecipeListContainer />
   </div>
 )
