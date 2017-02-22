@@ -9,11 +9,7 @@ import { recipeBox } from './reducer';
 
 let store = createStore(
   recipeBox,
-  applyMiddleware(
-    createLogger({
-      collapsed: true,
-      diff: true
-    }))
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 

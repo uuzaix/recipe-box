@@ -1,17 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
-export const AddRecipe = React.createClass({
-  getInitialState() {
-    return { showModal: false };
-  },
+// import { FormAdd } from '../components/FormAdd'
+import { addRecipe } from '../actions/actions'
 
-  close() {
-    this.setState({ showModal: false });
+const AddModal = React.createClass({
+
+  getInitialState() {
+    return { name: "", ingredients: "", showModal: false };
   },
 
   open() {
     this.setState({ showModal: true });
+  },
+
+  close() {
+    this.setState({ name: "", ingredients: "", showModal: false });
+  },
+
+  add() {
+    this.props.dispatch(addRecipe(this.state.name, this.state.ingredients.split(",")));
+    this.setState({ name: "", ingredients: "", showModal: false });
+  },
+
+  handleNameChange(event) {
+    this.setState({ name: event.target.value })
+  },
+
+  handleIngChange(event) {
+    this.setState({ ingredients: event.target.value })
   },
 
   render() {
@@ -30,15 +48,25 @@ export const AddRecipe = React.createClass({
             <Modal.Title>Add a Recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Recipe</h4>
-            <h4>Ingredients</h4>
+            <form>
+              <label>
+                Recipe name:
+                <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+              </label><br></br>
+              <label>
+                Ingredients:
+                <input type="text" value={this.state.ingredients} onChange={this.handleIngChange} />
+              </label>
+            </form>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Cancel</Button>
-            <Button onClick={this.close}>Add recipe</Button>
+            <Button onClick={this.add}>Add recipe</Button>
           </Modal.Footer>
         </Modal>
       </div>
     );
   }
 });
+
+export const AddRecipe = connect()(AddModal)
