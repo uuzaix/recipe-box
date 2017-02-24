@@ -1,9 +1,11 @@
-const initialState = [
+import { combineReducers } from 'redux';
+
+const initialRecipes = [
   { id: 1, name: "soup", ingredients: ['water', 'onion', 'potato'] },
   { id: 2, name: "hot chocolate", ingredients: ['milk', 'kakao'] }
 ];
 
-export const recipeBox = (state = initialState, action) => {
+const recipes = (state = initialRecipes, action) => {
   switch (action.type) {
     case 'ADD_RECIPE':
       return [...state, { id: action.id, name: action.name, ingredients: action.ingredients }]
@@ -15,3 +17,14 @@ export const recipeBox = (state = initialState, action) => {
       return state;
   }
 }
+
+const detailedView = (state = null, action) => {
+  switch (action.type) {
+    case 'CHANGE_DETAILED':
+      return action.id;
+    default:
+      return state;
+  }
+}
+
+export const recipeBox = combineReducers({ recipes, detailedView })
