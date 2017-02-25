@@ -4,7 +4,8 @@ import {
   ADD_RECIPE,
   UPDATE_RECIPE,
   DELETE_RECIPE,
-  CHANGE_DETAILED
+  CHANGE_DETAILED,
+  EDIT
 } from './action_types'
 
 export const addRecipe = (name, ingredients) => {
@@ -35,6 +36,13 @@ export const deleteRecipe = (id) => {
 export const changeDetailed = (id) => {
   return {
     type: CHANGE_DETAILED,
+    id
+  }
+}
+
+export const changeEditing = (id) => {
+  return {
+    type: EDIT,
     id
   }
 }

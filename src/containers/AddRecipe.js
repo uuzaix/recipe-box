@@ -51,11 +51,17 @@ const AddModal = React.createClass({
             <form>
               <label>
                 Recipe name:
-                <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+                <input type="text"
+                  placeholder="Enter recipe name"
+                  value={this.state.name}
+                  onChange={this.handleNameChange} />
               </label><br></br>
               <label>
                 Ingredients:
-                <input type="text" value={this.state.ingredients} onChange={this.handleIngChange} />
+                <input type="text"
+                  placeholder="Enter ingredients separeted by comma"
+                  value={this.state.ingredients}
+                  onChange={this.handleIngChange} />
               </label>
             </form>
           </Modal.Body>

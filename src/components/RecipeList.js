@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Recipe } from "./Recipe.js"
 
-export const RecipeList = ({recipes, detailed, onAddClick, onUpdateClick, onDeleteClick, onRecipeClick}) => {
+export const RecipeList = ({recipes, detailed, editing, onAddClick, onUpdateClick, onEditClick, onDeleteClick, onRecipeClick}) => {
   return (
     <div>
       <ul>
@@ -11,11 +11,12 @@ export const RecipeList = ({recipes, detailed, onAddClick, onUpdateClick, onDele
             recipe={recipe}
             key={recipe.id}
             detailed={detailed}
+            editing={editing}
             onUpdateClick={onUpdateClick}
+            onEditClick={onEditClick}
             onDeleteClick={onDeleteClick}
             onRecipeClick={onRecipeClick} />)}
       </ul>
-      {/*<button onClick={onAddClick}>Add</button>*/}
     </div>
   )
 }

@@ -18,13 +18,21 @@ const recipes = (state = initialRecipes, action) => {
   }
 }
 
-const detailedView = (state = null, action) => {
+const initialViews = { detailed: null, editing: null }
+const views = (state = initialViews, action) => {
   switch (action.type) {
     case 'CHANGE_DETAILED':
-      return action.id;
+      if (state.detailed === action.id) {
+        return Object.assign({}, state, { detailed: null });
+      }
+      return Object.assign({}, state, { detailed: action.id });
+    case 'UPDATE_RECIPE':
+      return Object.assign({}, state, { editing: null });
+    case 'EDIT':
+      return Object.assign({}, state, { editing: action.id });
     default:
       return state;
   }
 }
 
-export const recipeBox = combineReducers({ recipes, detailedView })
+export const recipeBox = combineReducers({ recipes, views })
