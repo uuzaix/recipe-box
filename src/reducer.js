@@ -5,6 +5,9 @@ const initialRecipes = [
   { id: 2, name: "hot chocolate", ingredients: ['milk', 'kakao'] }
 ];
 
+const initialViews = { detailed: null, editing: null };
+
+
 const recipes = (state = initialRecipes, action) => {
   switch (action.type) {
     case 'ADD_RECIPE':
@@ -18,7 +21,6 @@ const recipes = (state = initialRecipes, action) => {
   }
 }
 
-const initialViews = { detailed: null, editing: null }
 const views = (state = initialViews, action) => {
   switch (action.type) {
     case 'CHANGE_DETAILED':
