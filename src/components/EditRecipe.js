@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
+import { formatInput } from '../util/formatInput';
+
 
 const EditModal = React.createClass({
 
@@ -20,7 +22,7 @@ const EditModal = React.createClass({
   render() {
     return (
       <div>
-        <Modal show={true} onHide={this.close}>
+        <Modal show={true} onHide={() => this.props.onEditClick(null)}>
           <Modal.Header closeButton>
             <Modal.Title>Edit Recipe</Modal.Title>
           </Modal.Header>
@@ -42,7 +44,7 @@ const EditModal = React.createClass({
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => this.props.onEditClick(null)}>Cancel</Button>
-            <Button onClick={() => this.props.onUpdateClick(this.props.id, this.state.name, this.state.ingredients.split(","))}>Save recipe</Button>
+            <Button onClick={() => this.props.onUpdateClick(this.props.id, this.state.name, formatInput(this.state.ingredients))}>Save recipe</Button>
           </Modal.Footer>
         </Modal>
       </div>

@@ -4,6 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 
 // import { FormAdd } from '../components/FormAdd'
 import { addRecipe } from '../actions/actions'
+import { formatInput } from '../util/formatInput';
 
 const AddModal = React.createClass({
 
@@ -20,7 +21,7 @@ const AddModal = React.createClass({
   },
 
   add() {
-    this.props.dispatch(addRecipe(this.state.name, this.state.ingredients.split(",")));
+    this.props.dispatch(addRecipe(this.state.name, formatInput(this.state.ingredients)));
     this.setState({ name: "", ingredients: "", showModal: false });
   },
 
