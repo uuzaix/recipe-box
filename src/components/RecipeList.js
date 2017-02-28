@@ -4,7 +4,7 @@ import { Recipe } from "./Recipe.js"
 
 export const RecipeList = ({recipes, detailed, editing, onAddClick, onUpdateClick, onEditClick, onDeleteClick, onRecipeClick}) => {
   return (
-    <div>
+    <div className='recipe-list'>
       <ul>
         {recipes.map((recipe, i) =>
           <Recipe
