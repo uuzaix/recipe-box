@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form, FormGroup, Col, FormControl, ControlLabel } from 'react-bootstrap';
 
 import { formatInput } from '../util/formatInput';
 
@@ -27,24 +27,36 @@ const EditModal = React.createClass({
             <Modal.Title>Edit Recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
-              <label>
-                Recipe name:
-                <input type="text"
-                  value={this.state.name}
-                  onChange={this.handleNameChange} />
-              </label><br></br>
-              <label>
-                Ingredients:
-                <input type="text"
-                  value={this.state.ingredients}
-                  onChange={this.handleIngChange} />
-              </label>
-            </form>
+            <Form horizontal>
+              <FormGroup controlId='FormHorizontalName'>
+                <Col componentClass={ControlLabel} sm={3}>
+                  Recipe name
+                </Col>
+                <Col sm={9}>
+                  <FormControl
+                    type="text"
+                    placeholder="Enter recipe name"
+                    value={this.state.name}
+                    onChange={this.handleNameChange} />
+                </Col>
+              </FormGroup>
+              <FormGroup controlId='FormHorizontalIngredients'>
+                <Col componentClass={ControlLabel} sm={3}>
+                  Ingredients
+                </Col>
+                <Col sm={9}>
+                  <FormControl
+                    type="text"
+                    placeholder="Enter ingredients separeted by comma"
+                    value={this.state.ingredients}
+                    onChange={this.handleIngChange} />
+                </Col>
+              </FormGroup>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.props.onEditClick(null)}>Cancel</Button>
-            <Button onClick={() => this.props.onUpdateClick(this.props.id, this.state.name, formatInput(this.state.ingredients))}>Save recipe</Button>
+            <Button bsStyle='danger' onClick={() => this.props.onEditClick(null)}>Cancel</Button>
+            <Button bsStyle='success' onClick={() => this.props.onUpdateClick(this.props.id, this.state.name, formatInput(this.state.ingredients))}>Save recipe</Button>
           </Modal.Footer>
         </Modal>
       </div>

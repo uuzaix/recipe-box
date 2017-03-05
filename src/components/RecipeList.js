@@ -1,11 +1,13 @@
 import React from 'react';
+import { Well, ListGroup } from 'react-bootstrap';
 
 import { Recipe } from "./Recipe.js"
 
-export const RecipeList = ({recipes, detailed, editing, onAddClick, onUpdateClick, onEditClick, onDeleteClick, onRecipeClick}) => {
+export const RecipeList = ({ recipes, detailed, editing, onAddClick, onUpdateClick, onEditClick, onDeleteClick, onRecipeClick }) => {
   return (
-    <div className='recipe-list'>
-      <ul>
+
+    <Well>
+      <ListGroup>
         {recipes.map((recipe, i) =>
           <Recipe
             recipe={recipe}
@@ -16,7 +18,7 @@ export const RecipeList = ({recipes, detailed, editing, onAddClick, onUpdateClic
             onEditClick={onEditClick}
             onDeleteClick={onDeleteClick}
             onRecipeClick={onRecipeClick} />)}
-      </ul>
-    </div>
+      </ListGroup>
+    </Well>
   )
 }

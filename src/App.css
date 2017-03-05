@@ -5,18 +5,9 @@
 }
 
 #root {
-  display: flex;
-  justify-content: center;
   margin-top: 50px;
 }
 
-.recipe {
-  list-style: none;
-  padding: 10px;
-  border: 1px solid darkgray;
-  border-radius: 4px;
-}
-
-.recipe-title {
-  background-color: palegreen;
+button {
+  margin-left: 5px;
 }

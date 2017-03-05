@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form, FormGroup, Col, FormControl, ControlLabel } from 'react-bootstrap';
 
 // import { FormAdd } from '../components/FormAdd'
 import { addRecipe } from '../actions/actions'
@@ -49,29 +49,39 @@ const AddModal = React.createClass({
             <Modal.Title>Add a Recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
-              <label>
-                Recipe name:
-                <input type="text"
-                  placeholder="Enter recipe name"
-                  value={this.state.name}
-                  onChange={this.handleNameChange} />
-              </label><br></br>
-              <label>
-                Ingredients:
-                <input type="text"
-                  placeholder="Enter ingredients separeted by comma"
-                  value={this.state.ingredients}
-                  onChange={this.handleIngChange} />
-              </label>
-            </form>
+            <Form horizontal>
+              <FormGroup controlId='FormHorizontalName'>
+                <Col componentClass={ControlLabel} sm={3}>
+                  Recipe name
+                </Col>
+                <Col sm={9}>
+                  <FormControl
+                    type="text"
+                    placeholder="Enter recipe name"
+                    value={this.state.name}
+                    onChange={this.handleNameChange} />
+                </Col>
+              </FormGroup>
+              <FormGroup controlId='FormHorizontalIngredients'>
+                <Col componentClass={ControlLabel} sm={3}>
+                  Ingredients
+                </Col>
+                <Col sm={9}>
+                  <FormControl
+                    type="text"
+                    placeholder="Enter ingredients separeted by comma"
+                    value={this.state.ingredients}
+                    onChange={this.handleIngChange} />
+                </Col>
+              </FormGroup>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.close}>Cancel</Button>
-            <Button onClick={this.add}>Add recipe</Button>
+            <Button bsStyle='danger' onClick={this.close}>Cancel</Button>
+            <Button bsStyle='success' onClick={this.add}>Add recipe</Button>
           </Modal.Footer>
-        </Modal>
-      </div>
+        </Modal >
+      </div >
     );
   }
 });
